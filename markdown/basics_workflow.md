@@ -144,8 +144,15 @@ Then we can execute.
 
 
 ### UMI processing
-RiboGalaxy currently supports moving UMIs (unique molecular identifiers) from reads to read headers for the McGlincy & Ingolia protocol only. 
+RiboGalaxy currently supports moving UMIs (unique molecular identifiers) from reads to read headers for the **McGlincy & Ingolia protocol** only. 
 This is done using the **Move UMIs from Reads to Header** tool. This tool takes one input and produces one output fastq file. 
+
+![UMI screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/UMI.png)
+
+1. Select 'Move UMIs from Reads to Header' from the 'UMI and barcodes' section
+2. Choose the fastq file that you wish to process 
+3. Hit execute. 
+
 
 
 ### Removal of non coding RNA 
