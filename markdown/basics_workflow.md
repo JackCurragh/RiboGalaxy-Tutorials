@@ -91,7 +91,7 @@ Looking at the **per base sequence quality report** we can see that our sample d
 
 The **per base sequence content** is flagged as failed by FastQC. To be aware, however, that the 3’ end of the sequence reads have the adapter sequence which we will remove. The presence of sequencing adapters or barcodes that have not been trimmed will often lead to this test failing. 
 
-![per base sequence content](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/per_base_sequence_content.pg)
+![per base sequence content](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/per_base_sequence_content.png)
 
 The first number of bases are overrepresented by ‘T’ likely originating from untemplated additions. One option is to remove the first 3 bases using the **Trim sequences tool** from the Pre-processing tools list. As this is a small sample of a much larger FASTQ file, for the purpose of this training session we will leave as is. However, it is always worth checking for untemplated additions. Likewise, after adapter removal, it can be useful to re-run FastQC on the trimmed FASTQ file.
 
