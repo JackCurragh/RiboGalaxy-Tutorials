@@ -1,5 +1,7 @@
 # Processing Ribo-Seq Data with RiboGalaxy for [RiboSeq.org](https://riboseq.org/)
 
+![Ribogalaxy Icon](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/ribogalaxy_icon.png)
+
 ## About RiboSeq.org
 
 Riboseq.org is an online gateway to a set of integrated resources for the processing and analysis of ribosome profiling (Ribo-Seq) data. Currently these are GWIPS-viz, Trips-Viz and RiboGalaxy.  
