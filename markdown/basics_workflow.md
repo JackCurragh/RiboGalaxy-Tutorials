@@ -59,9 +59,52 @@ It is always good to create a new history for each general data processing task 
 
 ## Getting Data 
 
+Galaxy offers a number of ways of getting data onto the platform. You can export data straight from the UCSC table browser, NCBI Genomes Database or the ENA.
+
+![get data screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/get_data.png)
+
+For the purpose of this tutorial we will assume we start off with FASTQ file from one of our own experiments that we will need to upload from our local computer. We will use a sample yeast dataset that can be found [here](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/data/Riboseq_sample.fastq). 
+
+Once you click on 'Upload File' you are presented with the following screen.
+![upload screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/upload.png)  
+
+You can upload files in a number of ways. Once you have it uploaded your screen should look like this:
+
+![uploaded screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/uploaded.png)  
+
+Once the file is uploaded the first step is to check the quality of the sequenicng data. We will do this in the preprocessing step using FastQC.
 
 
 ## Preprocessing 
+
+### FastQC 
+
+Select FastQC from the preprocessing tools list in the tools panel. Select your uploaded Ribo-Seq FASTQ as your input and leaving all other parameters as default, hit execute. 
+
+It is worthwhile learning more about FastQC from their own documentation: [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). 
+
+Once the outputs turn green in the history panel the job is completed. Open the HTML report by downloading the Webpage output and opening it in a browser. 
+
+Looking at the **per base sequence quality report** we can see that our sample dataset is of high quality. 
+![per base sequence quality](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/per_base_sequence_quality.png)
+
+
+The **per base sequence content** is flagged as failed by FastQC. To be aware, however, that the 3’ end of the sequence reads have the adapter sequence which we will remove. The presence of sequencing adapters or barcodes that have not been trimmed will often lead to this test failing. 
+
+![per base sequence content](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/per_base_sequence_content.pg)
+
+The first number of bases are overrepresented by ‘T’ likely originating from untemplated additions. One option is to remove the first 3 bases using the **Trim sequences tool** from the Pre-processing tools list. As this is a small sample of a much larger FASTQ file, for the purpose of this training session we will leave as is. However, it is always worth checking for untemplated additions. Likewise, after adapter removal, it can be useful to re-run FastQC on the trimmed FASTQ file.
+
+
+### Adapters and Barcodes 
+
+In RiboGalaxy we use **Cutadapt** for adapter removal and barcode splitting. We do not require barcode splitting in the case of our small sample file, however, I will still demonstrate how we would set up the tool if we did need to split the fastq based on barcodes. 
+
+##### Cutadapt for Adapter Removal
+
+
+
+##### Cutadapt for Barcode Splitting
 
 
 
