@@ -95,16 +95,33 @@ The **per base sequence content** is flagged as failed by FastQC. To be aware, h
 
 The first number of bases are overrepresented by ‘T’ likely originating from untemplated additions. One option is to remove the first 3 bases using the **Trim sequences tool** from the Pre-processing tools list. As this is a small sample of a much larger FASTQ file, for the purpose of this training session we will leave as is. However, it is always worth checking for untemplated additions. Likewise, after adapter removal, it can be useful to re-run FastQC on the trimmed FASTQ file.
 
+The **overrepresented sequences** report shows over representation of the adapter sequence that we are yet to remove. If sequences that show up in this report do not correspond to the adapter then it can be useful to blast the overrepresented sequences to check for contamimation 
+
+![overrepresented_sequences](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/Overrepresented_sequences.png)
+
+We will need to remove the following adapter from the 3' ends of our reads: CTGTAGGCACCATCAAT. 
 
 ### Adapters and Barcodes 
 
 In RiboGalaxy we use **Cutadapt** for adapter removal and barcode splitting. We do not require barcode splitting in the case of our small sample file, however, I will still demonstrate how we would set up the tool if we did need to split the fastq based on barcodes. 
 
 ##### Cutadapt for Adapter Removal
+In the case of our sample file we have seen that the presence of a CTGTAGGCACCATCAAT adapter at the 3' end of each read caused FastQCs overrepresented sequeunces test to fail. We can remove this adapter using **cutadapt**.
+
 
 
 
 ##### Cutadapt for Barcode Splitting
+
+
+### UMI processing
+RiboGalaxy currently supports moving UMIs (unique molecular identifiers) from reads to read headers for the McGlincy & Ingolia protocol only. 
+This is done using the **Move UMIs from Reads to Header** tool. This tool takes one input and produces one output fastq file. 
+
+
+### Removal of non coding RNA 
+
+In ribosome profiling data analysis we are only interested in processing true ribosome protected fragments. As a result, we align all remaining reads to the rRNA and tRNA of our organism prior to Genome/Transcriptome Alignment. On RiboGalaxy we do this using Bowtie. 
 
 
 
