@@ -124,6 +124,22 @@ Then hit **Execute** leaving all other parameters as default.
 
 ##### Cutadapt for Barcode Splitting
 
+Although we do no need to demultiplex on Barcodes for this sample, **cutadapt** does support this functionality too. 
+
+![demultiplex screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/demultiplex.png)
+
+1. Select the cutadapt tool from the tools panel under the preprocessing section. 
+2. Under the 'FASTQ/A file' section choose your uploaded file (eg. Riboseq_sample.fastq)
+3. In this case we choose "Insert 3' (End) Adapter" 
+4. In the dropdown menu that is produced, pick 'File from history' from Source.
+5. Then under 'Choose file containing 3' adapters' pick a FASTA file that you have uploaded containing the barcodes. 
+
+There is more information on this barcode fasta file in the [cutadapt documentation](https://cutadapt.readthedocs.io/en/stable/guide.html#demultiplexing) 
+
+Finally, prior to hitting **Execute** there is one more step. In the 'Outputs selector' we must select 'Multiple output: create a separate file for each adapter trimmed (default: all trimmed reads are in a single file)'. 
+
+![multiple output screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/multi_output.png)
+
 
 ### UMI processing
 RiboGalaxy currently supports moving UMIs (unique molecular identifiers) from reads to read headers for the McGlincy & Ingolia protocol only. 
