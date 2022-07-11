@@ -105,9 +105,20 @@ We will need to remove the following adapter from the 3' ends of our reads: CTGT
 
 In RiboGalaxy we use **Cutadapt** for adapter removal and barcode splitting. We do not require barcode splitting in the case of our small sample file, however, I will still demonstrate how we would set up the tool if we did need to split the fastq based on barcodes. 
 
+
 ##### Cutadapt for Adapter Removal
 In the case of our sample file we have seen that the presence of a CTGTAGGCACCATCAAT adapter at the 3' end of each read caused FastQCs overrepresented sequeunces test to fail. We can remove this adapter using **cutadapt**.
 
+![cutadapt screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/cutadpat.png)
+
+1. Select the cutadapt tool from the tools panel under the preprocessing section. 
+2. Under the 'FASTQ/A file' section choose your uploaded file (eg. Riboseq_sample.fastq)
+3. In this case we choose "Insert 3' (End) Adapter" 
+4. In the dropdown menu that is produced, pick 'Enter Custom Sequence' from Source
+5. Give the adapter a name 
+6. Enter the adapter sequence (in our case: CTGTAGGCACCATCAAT)
+
+Then hit **Execute** leaving all other parameters as default. 
 
 
 
