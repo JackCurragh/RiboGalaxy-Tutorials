@@ -140,6 +140,8 @@ Finally, prior to hitting **Execute** there is one more step. In the 'Outputs se
 
 ![multiple output screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/multi_output.png)
 
+Then we can execute. 
+
 
 ### UMI processing
 RiboGalaxy currently supports moving UMIs (unique molecular identifiers) from reads to read headers for the McGlincy & Ingolia protocol only. 
