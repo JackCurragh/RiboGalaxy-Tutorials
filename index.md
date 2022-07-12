@@ -1,13 +1,6 @@
 # Processing Ribo-Seq Data with RiboGalaxy for [RiboSeq.org](https://riboseq.org/)
 
-<img 
-    style="display: block; 
-           margin-left: auto;
-           margin-right: auto;
-           width: 30%;"
-    src="https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/ribogalaxy_icon.png" 
-    alt="Ribogalaxy Icon">
-</img>
+![Ribogalaxy Icon](/screenshots/ribogalaxy_icon.png)
 
 ## About RiboSeq.org
 
@@ -33,14 +26,14 @@ This is the basic Galaxy user interface that you may be familiar with from other
 ### Login/Register 
 We **strongly** advise that all users create an account and login prior to carrying out any data processing or analysis. This ensures that information about your analysis is associated with your account and can be accessed from any browser. If you forget to login then there is nothing we can do to help you retrace your steps! 
 
-![login and register tab screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/login_register.png)
+![login and register tab screenshot](/screenshots/login_register.png)
 
 ### Tool Panel 
 The tool panel on the left hand side is where you will find the RiboGalaxy supported data processing tools. Within this panel tools are grouped into the data processing stages that they are generally used for. However, we will see later on where some tools can be used in other steps also. 
 
 Clicking on the tool name will load a new page where you can input you parameters prior to running the tool. 
 
-![tool panel screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/tool_panel.png)
+![tool panel screenshot](/screenshots/tool_panel.png)
 
 
 ### History
@@ -49,11 +42,11 @@ Your data processing and analysis history is stored on the panel to the right. H
 
 All of the metadata about the job that was run to produce each output can be accessed by clicking on that output. You can also visualise and download the data using various buttons on that panel. 
 
-![history screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/history.png)
+![history screenshot](/screenshots/history.png)
 
 It is always good to create a new history for each general data processing task and to rename it to reflect its purpose. 
 
-![history rename screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/rename_history.png)
+![history rename screenshot](/screenshots/rename_history.png)
 
 
 
@@ -61,16 +54,16 @@ It is always good to create a new history for each general data processing task 
 
 Galaxy offers a number of ways of getting data onto the platform. You can export data straight from the UCSC table browser, NCBI Genomes Database or the ENA.
 
-![get data screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/get_data.png)
+![get data screenshot](/screenshots/get_data.png)
 
 For the purpose of this tutorial we will assume we start off with FASTQ file from one of our own experiments that we will need to upload from our local computer. We will use a sample yeast dataset that can be found [here](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/data/Riboseq_sample.fastq). 
 
 Once you click on 'Upload File' you are presented with the following screen.
-![upload screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/upload.png)  
+![upload screenshot](/screenshots/upload.png)  
 
 You can upload files in a number of ways. Once you have it uploaded your screen should look like this:
 
-![uploaded screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/file_uploaded.png)  
+![uploaded screenshot](/screenshots/file_uploaded.png)  
 
 Once the file is uploaded the first step is to check the quality of the sequenicng data. We will do this in the preprocessing step using FastQC.
 
@@ -86,18 +79,18 @@ It is worthwhile learning more about FastQC from their own documentation: [FastQ
 Once the outputs turn green in the history panel the job is completed. Open the HTML report by downloading the Webpage output and opening it in a browser. 
 
 Looking at the **per base sequence quality report** we can see that our sample dataset is of high quality. 
-![per base sequence quality](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/per_base_sequence_quality.png)
+![per base sequence quality](/screenshots/per_base_sequence_quality.png)
 
 
 The **per base sequence content** is flagged as failed by FastQC. To be aware, however, that the 3’ end of the sequence reads have the adapter sequence which we will remove. The presence of sequencing adapters or barcodes that have not been trimmed will often lead to this test failing. 
 
-![per base sequence content](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/per_base_sequence_content.png)
+![per base sequence content](/screenshots/per_base_sequence_content.png)
 
 The first number of bases are overrepresented by ‘T’ likely originating from untemplated additions. One option is to remove the first 3 bases using the **Trim sequences tool** from the Pre-processing tools list. As this is a small sample of a much larger FASTQ file, for the purpose of this training session we will leave as is. However, it is always worth checking for untemplated additions. Likewise, after adapter removal, it can be useful to re-run FastQC on the trimmed FASTQ file.
 
 The **overrepresented sequences** report shows over representation of the adapter sequence that we are yet to remove. If sequences that show up in this report do not correspond to the adapter then it can be useful to blast the overrepresented sequences to check for contamimation 
 
-![overrepresented_sequences](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/Overrepresented_sequences.png)
+![overrepresented_sequences](/screenshots/Overrepresented_sequences.png)
 
 We will need to remove the following adapter from the 3' ends of our reads: CTGTAGGCACCATCAAT. 
 
@@ -109,7 +102,7 @@ In RiboGalaxy we use **Cutadapt** for adapter removal and barcode splitting. We 
 ##### Cutadapt for Adapter Removal
 In the case of our sample file we have seen that the presence of a CTGTAGGCACCATCAAT adapter at the 3' end of each read caused FastQCs overrepresented sequeunces test to fail. We can remove this adapter using **cutadapt**.
 
-![cutadapt screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/cutadpat.png)
+![cutadapt screenshot](/screenshots/cutadpat.png)
 
 1. Select the cutadapt tool from the tools panel under the preprocessing section. 
 2. Under the 'FASTQ/A file' section choose your uploaded file (eg. Riboseq_sample.fastq)
@@ -126,7 +119,7 @@ Then hit **Execute** leaving all other parameters as default.
 
 Although we do no need to demultiplex on Barcodes for this sample, **cutadapt** does support this functionality too. 
 
-![demultiplex screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/demultiplex.png)
+![demultiplex screenshot](/screenshots/demultiplex.png)
 
 1. Select the cutadapt tool from the tools panel under the preprocessing section. 
 2. Under the 'FASTQ/A file' section choose your uploaded file (eg. Riboseq_sample.fastq)
@@ -138,7 +131,7 @@ There is more information on this barcode fasta file in the [cutadapt documentat
 
 Finally, prior to hitting **Execute** there is one more step. In the 'Outputs selector' we must select 'Multiple output: create a separate file for each adapter trimmed (default: all trimmed reads are in a single file)'. 
 
-![multiple output screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/multi_output.png)
+![multiple output screenshot](/screenshots/multi_output.png)
 
 Then we can execute. 
 
@@ -147,7 +140,7 @@ Then we can execute.
 RiboGalaxy currently supports moving UMIs (unique molecular identifiers) from reads to read headers for the **McGlincy & Ingolia protocol** only. 
 This is done using the **Move UMIs from Reads to Header** tool. This tool takes one input and produces one output fastq file. 
 
-![UMI screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/UMI.png)
+![UMI screenshot](/screenshots/UMI.png)
 
 1. Select 'Move UMIs from Reads to Header' from the 'UMI and barcodes' section
 2. Choose the fastq file that you wish to process 
@@ -161,7 +154,7 @@ In ribosome profiling data analysis we are only interested in processing true ri
 
 RiboGalaxy provides users with a selection of commonly used rRNA and tRNA indices that can be used to speed up this step. However, in the case where your organism of interest is not supported you can upload a FASTA file and bowtie/RiboGalaxy will index it for you! 
 
-![ncRNA screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/ncRNA.png)
+![ncRNA screenshot](/screenshots/ncRNA.png)
 
 1. Select **Bowtie ncRNA Removal** from the tool panel
 2. Choose to use a built-in index
@@ -182,14 +175,14 @@ The process of using these tools is identical to that above when removing ncRNA.
 
 If you would like to visualise your alignments on the genome browser GWIPS-Viz then you must first align to the Genome reference. 
 
-![genome screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/genome.png)
+![genome screenshot](/screenshots/genome.png)
 
 
 ### Transcriptome Alignment
 
 If a user wishes to visualise and further analyse their Ribo-Seq data on Trips-Viz they must first align to a supported transcriptome reference. 
 
-![transcriptome screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/transcriptome.png)
+![transcriptome screenshot](/screenshots/transcriptome.png)
 
 
 ## Alignment Processing Prior to Upload
@@ -204,7 +197,7 @@ To create a BigWig file from the BAM file produced in the Genome Aignment step w
 
 #### Sort the BAM file
 
-![genome sort screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/sort_genome.png)
+![genome sort screenshot](/screenshots/sort_genome.png)
 
 1. Choose **Samtools Sort** from the tool panel in the section under **GWIPS-Viz**.
 2. Select the Genome aligned BAM file from your history. 
@@ -216,7 +209,7 @@ To create a BigWig file from the BAM file produced in the Genome Aignment step w
 
 The BAM file is now ready to be converted to a Ribosome Profile. 
 
-![create ribosome profile screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/create_ribosome_profile.png)
+![create ribosome profile screenshot](/screenshots/create_ribosome_profile.png)
 
 1. Select **Create Ribosome Profiles** from the tool panel under GWIPS-Viz 
 2. Under Bam File to Process select the coordinate-sorted BAM file 
@@ -235,7 +228,7 @@ When using RNase digested reads we use the Offset approach. If the reads are dig
 
 Finally, we can convert our profile to the desired bigWig file. However, first we must create a chromosome sizes file for our genome of interest.
 
-![create chrom sizes screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/create_chrom_sizes.png)
+![create chrom sizes screenshot](/screenshots/create_chrom_sizes.png)
 
 1. Choose Get Chromosome Sizes from the tool panel.
 2. Select the FASTA input type that you are using. In this case we used a built-in index
@@ -243,7 +236,7 @@ Finally, we can convert our profile to the desired bigWig file. However, first w
 4. It is a requirement of GWIPS-Viz and UCSC genome broswer that all bed files have a 'chr' prefix in the chromosome column. Select this from the dropdown menu under 'Chromosome Column Prefix'. 
 5. Hit Execute
 
-![create bigWig screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/create_bigWig.png)
+![create bigWig screenshot](/screenshots/create_bigWig.png)
 
 1. Select Convert a BED file to a BigWig from the tools panel 
 2. Select your BED file from the drop down menu
@@ -251,7 +244,7 @@ Finally, we can convert our profile to the desired bigWig file. However, first w
 4. Hit Execute. 
 
 
-![bigWig link screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/bigwig_link.png)
+![bigWig link screenshot](/screenshots/bigwig_link.png)
 
 
 By copying the link using the button shown above on the tool panel we can load this data as a custom track on [GWIPS-Viz](https://gwips.ucc.ie/cgi-bin/hgCustom?hgsid=248489_riCoxQ2cODOLAdzU5YYA0zDLIrxN)
