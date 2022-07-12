@@ -263,9 +263,58 @@ To create this sqlite file we must run the following steps.
 
 #### Sort the BAM file 
 
+![transcriptome sort screenshot](/screenshots/sort_transcriptome.png)
 
-#### Create a Organism Reference 
+1. Choose **Samtools Sort** from the tool panel in the section under **Trips-Viz**.
+2. Select the Transcriptome aligned BAM file from your history. 
+3. Ensure 'Name' is selected as the primary sort key. This is set as default and is the primary differentiator between this tool and the one under the GWIPS-Viz section
+4. Hit Execute
+
+
+#### Get an Organism Reference 
+
+We can either Download an Organism Reference from Trips-Viz or, if Trips does not support our organism, we can create and uplaod our own reference file. 
+
+##### Download 
+
+It is preferable to download the reference from Trips-Viz itself to avoid having to upload your own reference. Proceed to [Trips-Viz/downloads](https://trips.ucc.ie/downloads/) and download the .sqlite file. 
+
+![Trips Download screenshot](/screenshots/trips_download.png)
+
+##### Create your Own 
+
+This option is more awkward as it involves fetching the corresponding GTF/GFF3 annotation file for your transcriptome. Typically we try to use the annotations from Gencode or Ensembl as other formattings can lead to errors. 
+
+1. Transcriptome Name: This is a name (without spaces) for the reference transcriptome
+2. Transcriptome GFF3/GTF and Transcriptome FASTA must match. 
+3. Psuedo UTR length: This is used in cases where references just contain the CDS. Otherwise just use 0
+4. Transcript ID: Usually this begins ENST... Look in the GTF file to find an example
+5. Gene Name: This can also be found in the GTF file normally with the prefix 'Name'
+
 
 
 #### Convert the BAM file to SQLITE 
 
+![Bam to Sqlite screenshot](/screenshots/Bam_to_sqlite.png)
+
+1. Choose BAM to Sqlite from the tool Panel under Trips-Viz section 
+2. Under Sorted (-n) BAM file, choose the name sorted file ensuring that it was aligned to the correct transcriptome
+3. Under Path to Organism Sqlite choose either the created or Uploaded annotation file from Trips 
+4. Give the file a description regarding the sample conditions 
+5. Hit Execute 
+
+
+#### Upload to Trips
+
+Firstly we must download the processed file from RiboGalaxy. 
+![sqlite download screenshot](/screenshots/sqlite_downlaod.png)
+
+![Trips Upload screenshot](/screenshots/trips_upload.png)
+
+1. Go to [Trips upload page](https://trips.ucc.ie/uploads/)
+2. Choose 'Upload a File'
+3. Fill in the information choosing the downloaded file from your local computer. 
+4. Hit upload. 
+
+
+For more help with using Trips-Viz Check out our [documentation](https://trips.ucc.ie/help/).
