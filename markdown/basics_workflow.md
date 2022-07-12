@@ -70,7 +70,7 @@ Once you click on 'Upload File' you are presented with the following screen.
 
 You can upload files in a number of ways. Once you have it uploaded your screen should look like this:
 
-![uploaded screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/uploaded.png)  
+![uploaded screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/file_uploaded.png)  
 
 Once the file is uploaded the first step is to check the quality of the sequenicng data. We will do this in the preprocessing step using FastQC.
 
