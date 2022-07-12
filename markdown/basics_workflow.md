@@ -252,6 +252,8 @@ Finally, we can convert our profile to the desired bigWig file. However, first w
 
 
 ![bigWig link screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/bigwig_link.png)
+
+
 By copying the link using the button shown above on the tool panel we can load this data as a custom track on [GWIPS-Viz](https://gwips.ucc.ie/cgi-bin/hgCustom?hgsid=248489_riCoxQ2cODOLAdzU5YYA0zDLIrxN)
 
 
