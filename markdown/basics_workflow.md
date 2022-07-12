@@ -204,11 +204,58 @@ To create a BigWig file from the BAM file produced in the Genome Aignment step w
 
 #### Sort the BAM file
 
+![genome sort screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/sort_genome.png)
+
+1. Choose **Samtools Sort** from the tool panel in the section under **GWIPS-Viz**.
+2. Select the Genome aligned BAM file from your history. 
+3. Ensure 'Coordinate' is selected as the primary sort key. This is set as default and is the primary differentiator between this tool and the one under the Trips-Viz section
+4. Hit Execute
+
 
 #### Create a Ribosome Profile 
 
+The BAM file is now ready to be converted to a Ribosome Profile. 
+
+![create ribosome profile screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/create_ribosome_profile.png)
+
+1. Select **Create Ribosome Profiles** from the tool panel under GWIPS-Viz 
+2. Under Bam File to Process select the coordinate-sorted BAM file 
+3. Ensure you have the same reference to which you previously aligned your sample selected. 
+4. Hit Execute. 
+
+The other paramaters in this tool allow have little help guides underneath to explin when to use each parameter. 
+
+When processing elongating ribosomes we use a set offset of 15 bases. For initiating ribosomes we use an offset of 12. 
+
+When using RNase digested reads we use the Offset approach. If the reads are digested with MNase then a weight centered approach is advised. 
+
+
 
 #### Convert a Ribosome Profile to a bigWig 
+
+Finally, we can convert our profile to the desired bigWig file. However, first we must create a chromosome sizes file for our genome of interest.
+
+![create chrom sizes screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/create_chrom_sizes.png)
+
+1. Choose Get Chromosome Sizes from the tool panel.
+2. Select the FASTA input type that you are using. In this case we used a built-in index
+3. Choose the built-in index or FASTA file from the dropdown list. 
+4. It is a requirement of GWIPS-Viz and UCSC genome broswer that all bed files have a 'chr' prefix in the chromosome column. Select this from the dropdown menu under 'Chromosome Column Prefix'. 
+5. Hit Execute
+
+![create bigWig screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/create_bigWig.png)
+
+1. Select Convert a BED file to a BigWig from the tools panel 
+2. Select your BED file from the drop down menu
+3. Select your chromosome sizes file from the dropdown menu under Chromosome Sizes
+4. Hit Execute. 
+
+
+![bigWig link screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/bigwig_link.png)
+By copying the link using the button shown above on the tool panel we can load this data as a custom track on [GWIPS-Viz](https://gwips.ucc.ie/cgi-bin/hgCustom?hgsid=248489_riCoxQ2cODOLAdzU5YYA0zDLIrxN)
+
+
+
 
 
 
