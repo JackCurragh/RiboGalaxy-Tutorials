@@ -26,7 +26,7 @@ Riboseq.org is an online gateway to a set of integrated resources for the proces
 
 ## Galaxy Basics 
 
-![homepage screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/homepage.png)
+![homepage screenshot](/screenshots/homepage.png)
 
 This is the basic Galaxy user interface that you may be familiar with from other Galaxy instances. If not, the most important features are highlighted here. 
 
