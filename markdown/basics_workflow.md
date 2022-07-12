@@ -159,17 +159,71 @@ This is done using the **Move UMIs from Reads to Header** tool. This tool takes 
 
 In ribosome profiling data analysis we are only interested in processing true ribosome protected fragments. As a result, we align all remaining reads to the rRNA and tRNA of our organism prior to Genome/Transcriptome Alignment. On RiboGalaxy we do this using Bowtie. 
 
+RiboGalaxy provides users with a selection of commonly used rRNA and tRNA indices that can be used to speed up this step. However, in the case where your organism of interest is not supported you can upload a FASTA file and bowtie/RiboGalaxy will index it for you! 
+
+![ncRNA screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/ncRNA.png)
+
+1. Select **Bowtie ncRNA Removal** from the tool panel
+2. Choose to use a built-in index
+3. Select the index you want to use from the 'Select a reference index' drop down list
+4. Choose the FASTQ file you want ot align. Normally this will be the FASTQ with adapters removed.
+5. Choosing Full Paramter list under 'Bowtie Settings' allows you to customise alignment parameters although the defaults are set up for ncRNA removal. 
+
+This marks the end of the preprocessing steps. The reads should now be ready for alignment to the genome/transcriptome.
 
 
 ## Read Alignment 
 
+Whether we are aligning to the Genome or the Transcriptome on RiboGalaxy we use Bowtie. The alignment parameters vary depending on the reference type so on RiboGalaxy we split these two similar processes into individual tools that differ by the built in indexes that are available and the default paramaters that are selected. 
+
+The process of using these tools is identical to that above when removing ncRNA. The screenshots below visually describe these processes. 
+
+### Genome Alignment 
+
+If you would like to visualise your alignments on the genome browser GWIPS-Viz then you must first align to the Genome reference. 
+
+![genome screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/genome.png)
+
+
+### Transcriptome Alignment
+
+If a user wishes to visualise and further analyse their Ribo-Seq data on Trips-Viz they must first align to a supported transcriptome reference. 
+
+![transcriptome screenshot](https://github.com/JackCurragh/RiboGalaxy-Tutorials/blob/main/screenshots/transcriptome.png)
 
 
 ## Alignment Processing Prior to Upload
 
+Some of the following steps are common across Ribo-Seq data processing pipelines. However some choices have been made to conform to the inteded destination resources GWIPS-Viz and Trips-Viz. 
+
 ### [GWIPS-Viz](https://gwips.ucc.ie/index.html)
+
+In order to visualise a dataset of GWIPS-Viz we must create a [bigWig](https://genome.ucsc.edu/goldenPath/help/bigWig.html) file of the ribosome profiles and host it somewhere accessible on the internet such as a FTP server. 
+
+To create a BigWig file from the BAM file produced in the Genome Aignment step we carry out the following steps. 
+
+#### Sort the BAM file
+
+
+#### Create a Ribosome Profile 
+
+
+#### Convert a Ribosome Profile to a bigWig 
 
 
 
 
 ### [Trips-Viz](https://trips.ucc.ie/)
+
+In order to visualise and analyse ribosome profiling data on Trips-Viz we must convert the BAM file produced in the Transcriptome Alignment step to a custom SQLITE dictionary. This is essentially a database of transcriptome alignments that we use to reduce processing time when a user renders a plot on Trips-Viz. 
+
+To create this sqlite file we must run the following steps. 
+
+#### Sort the BAM file 
+
+
+#### Create a Organism Reference 
+
+
+#### Convert the BAM file to SQLITE 
+
