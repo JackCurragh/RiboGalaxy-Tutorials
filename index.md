@@ -1,3 +1,5 @@
+ <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
 # Processing Ribo-Seq Data with RiboGalaxy for [RiboSeq.org](https://riboseq.org/)
 
 ![Ribogalaxy Icon](/screenshots/ribogalaxy_icon.png)
