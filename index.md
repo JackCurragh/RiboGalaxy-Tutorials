@@ -307,7 +307,7 @@ This option is more awkward as it involves fetching the corresponding GTF/GFF3 a
 #### Upload to Trips
 
 Firstly we must download the processed file from RiboGalaxy. 
-![sqlite download screenshot](/screenshots/sqlite_downlaod.png)
+![sqlite download screenshot](/screenshots/sqlite_download.png)
 
 ![Trips Upload screenshot](/screenshots/trips_upload.png)
 
